@@ -5,18 +5,18 @@
       <!-- Sidebar Filters -->
       <aside class="w-full md:w-64 shrink-0 space-y-8">
         <div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Categories</h3>
+          <h3 class="text-lg font-light text-white uppercase tracking-widest mb-6">Categories</h3>
           <div v-if="productStore.categories.length === 0" class="space-y-2">
-            <div v-for="i in 5" :key="i" class="h-8 bg-slate-200 dark:bg-slate-700 animate-pulse rounded"></div>
+            <div v-for="i in 5" :key="i" class="h-10 bg-white/5 animate-pulse rounded-none"></div>
           </div>
-          <ul v-else class="space-y-2">
+          <ul v-else class="space-y-1">
             <li>
-              <button @click="clearFilters" :class="['w-full text-left px-3 py-2 rounded-lg transition-colors capitalize text-sm font-medium', !activeCategory ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800']">
+              <button @click="clearFilters" :class="['w-full text-left px-4 py-3 rounded-none transition-colors uppercase tracking-widest text-xs font-semibold', !activeCategory ? 'bg-primary-500/10 text-primary-500 border-l-2 border-primary-500' : 'text-slate-400 hover:bg-white/5 hover:text-primary-500 border-l-2 border-transparent']">
                 All Products
               </button>
             </li>
             <li v-for="cat in productStore.categories" :key="cat">
-              <button @click="selectCategory(cat)" :class="['w-full text-left px-3 py-2 rounded-lg transition-colors capitalize text-sm font-medium', activeCategory === cat ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400' : 'text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800']">
+              <button @click="selectCategory(cat)" :class="['w-full text-left px-4 py-3 rounded-none transition-colors uppercase tracking-widest text-xs font-semibold', activeCategory === cat ? 'bg-primary-500/10 text-primary-500 border-l-2 border-primary-500' : 'text-slate-400 hover:bg-white/5 hover:text-primary-500 border-l-2 border-transparent']">
                 {{ cat }}
               </button>
             </li>
@@ -26,19 +26,19 @@
 
       <!-- Main Content -->
       <div class="flex-1">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <h1 class="text-2xl font-bold text-slate-900 dark:text-white capitalize">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-6 border-b border-white/5 pb-6">
+          <h1 class="text-3xl font-light text-white uppercase tracking-widest">
             {{ activeCategory ? activeCategory : (searchQuery ? `Search: "${searchQuery}"` : 'All Products') }}
           </h1>
           
-          <div class="relative w-full sm:w-64">
-            <SearchIcon class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <div class="relative w-full sm:w-72">
+            <SearchIcon class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input 
               v-model="searchInput" 
               @keyup.enter="handleSearch"
               type="text" 
-              placeholder="Search products..." 
-              class="input-field pl-9 py-2 text-sm"
+              placeholder="Search collection..." 
+              class="input-field pl-12 py-3 text-sm bg-dark-surface border-b-2 border-transparent focus:border-primary-500 rounded-none shadow-xl"
             >
           </div>
         </div>
@@ -47,11 +47,11 @@
           <LoadingSkeleton v-for="i in 6" :key="i" />
         </div>
 
-        <div v-else-if="productStore.products.length === 0" class="text-center py-24 bg-white dark:bg-dark-surface rounded-2xl border border-slate-200 dark:border-slate-800">
-          <PackageIcon class="w-16 h-16 mx-auto mb-4 text-slate-300 dark:text-slate-600" />
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">No products found</h3>
-          <p class="text-slate-500 dark:text-slate-400">Try adjusting your search or filters.</p>
-          <button @click="clearFilters" class="btn-primary mt-6">Clear All Filters</button>
+        <div v-else-if="productStore.products.length === 0" class="text-center py-32 bg-dark-surface rounded-none border border-white/5 shadow-2xl">
+          <PackageIcon class="w-16 h-16 mx-auto mb-6 text-slate-600" />
+          <h3 class="text-xl font-light uppercase tracking-widest text-white mb-2">No products found</h3>
+          <p class="text-slate-400 font-light">Try adjusting your search or filters.</p>
+          <button @click="clearFilters" class="btn-primary mt-8">Clear All Filters</button>
         </div>
 
         <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

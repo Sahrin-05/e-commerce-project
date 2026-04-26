@@ -4,39 +4,39 @@
       
       <!-- Sidebar -->
       <aside class="w-full md:w-64 shrink-0 space-y-6">
-        <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-slate-200 dark:border-slate-800 text-center">
-          <img :src="authStore.user?.image" :alt="authStore.user?.username" class="w-24 h-24 rounded-full mx-auto border-4 border-slate-50 dark:border-slate-800 shadow-sm mb-4">
-          <h2 class="text-xl font-bold text-slate-900 dark:text-white">{{ authStore.user?.firstName }} {{ authStore.user?.lastName }}</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">{{ authStore.user?.email }}</p>
-          <button @click="handleLogout" class="w-full btn-secondary text-sm">
+        <div class="bg-dark-surface rounded-none p-8 border border-white/5 text-center shadow-2xl">
+          <img :src="authStore.user?.image" :alt="authStore.user?.username" class="w-24 h-24 rounded-none mx-auto border border-primary-500/50 shadow-sm mb-6 object-cover p-1">
+          <h2 class="text-xl font-light text-white uppercase tracking-widest">{{ authStore.user?.firstName }} {{ authStore.user?.lastName }}</h2>
+          <p class="text-sm text-slate-400 mb-8 font-light">{{ authStore.user?.email }}</p>
+          <button @click="handleLogout" class="w-full btn-secondary text-xs uppercase tracking-widest py-3">
             Log Out
           </button>
         </div>
 
-        <nav class="bg-white dark:bg-dark-surface rounded-2xl p-4 border border-slate-200 dark:border-slate-800">
-          <ul class="space-y-1">
+        <nav class="bg-dark-surface rounded-none p-4 border border-white/5 shadow-2xl">
+          <ul class="space-y-2">
             <li>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400 font-medium">
+              <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-none bg-primary-500/5 text-primary-500 font-medium border-l-2 border-primary-500">
                 <LayoutDashboardIcon class="w-5 h-5" />
-                Overview
+                <span class="uppercase tracking-widest text-xs">Overview</span>
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors">
+              <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-none text-slate-400 hover:bg-dark-bg hover:text-primary-500 transition-colors border-l-2 border-transparent hover:border-primary-500/50">
                 <ShoppingBagIcon class="w-5 h-5" />
-                Orders
+                <span class="uppercase tracking-widest text-xs">Orders</span>
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors">
+              <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-none text-slate-400 hover:bg-dark-bg hover:text-primary-500 transition-colors border-l-2 border-transparent hover:border-primary-500/50">
                 <HeartIcon class="w-5 h-5" />
-                Wishlist
+                <span class="uppercase tracking-widest text-xs">Wishlist</span>
               </a>
             </li>
             <li>
-              <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors">
+              <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-none text-slate-400 hover:bg-dark-bg hover:text-primary-500 transition-colors border-l-2 border-transparent hover:border-primary-500/50">
                 <SettingsIcon class="w-5 h-5" />
-                Settings
+                <span class="uppercase tracking-widest text-xs">Settings</span>
               </a>
             </li>
           </ul>
@@ -45,80 +45,80 @@
 
       <!-- Main Content -->
       <div class="flex-1 space-y-8">
-        <h1 class="text-3xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+        <h1 class="text-3xl font-light text-white uppercase tracking-widest mb-10">Dashboard</h1>
 
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-            <div class="p-4 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl">
-              <ShoppingBagIcon class="w-8 h-8" />
+          <div class="bg-dark-surface rounded-none p-6 border border-white/5 shadow-2xl flex items-center gap-6">
+            <div class="p-4 bg-dark-bg text-primary-500 rounded-none border border-primary-500/30">
+              <ShoppingBagIcon class="w-6 h-6" />
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Orders</p>
-              <p class="text-2xl font-bold text-slate-900 dark:text-white">12</p>
+              <p class="text-xs uppercase tracking-widest text-slate-400 mb-1">Total Orders</p>
+              <p class="text-2xl font-light text-white">12</p>
             </div>
           </div>
           
-          <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-            <div class="p-4 bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-xl">
-              <CreditCardIcon class="w-8 h-8" />
+          <div class="bg-dark-surface rounded-none p-6 border border-white/5 shadow-2xl flex items-center gap-6">
+            <div class="p-4 bg-dark-bg text-primary-500 rounded-none border border-primary-500/30">
+              <CreditCardIcon class="w-6 h-6" />
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Spent</p>
-              <p class="text-2xl font-bold text-slate-900 dark:text-white">$1,245.00</p>
+              <p class="text-xs uppercase tracking-widest text-slate-400 mb-1">Total Spent</p>
+              <p class="text-2xl font-light text-white">$1,245.00</p>
             </div>
           </div>
 
-          <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-            <div class="p-4 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-xl">
-              <HeartIcon class="w-8 h-8" />
+          <div class="bg-dark-surface rounded-none p-6 border border-white/5 shadow-2xl flex items-center gap-6">
+            <div class="p-4 bg-dark-bg text-primary-500 rounded-none border border-primary-500/30">
+              <HeartIcon class="w-6 h-6" />
             </div>
             <div>
-              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">Wishlist Items</p>
-              <p class="text-2xl font-bold text-slate-900 dark:text-white">8</p>
+              <p class="text-xs uppercase tracking-widest text-slate-400 mb-1">Wishlist</p>
+              <p class="text-2xl font-light text-white">8</p>
             </div>
           </div>
         </div>
 
         <!-- Recent Orders (Mock Data) -->
-        <div class="bg-white dark:bg-dark-surface rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Recent Orders</h3>
+        <div class="bg-dark-surface rounded-none border border-white/5 shadow-2xl overflow-hidden">
+          <div class="px-8 py-6 border-b border-white/5">
+            <h3 class="text-lg font-light text-white uppercase tracking-widest">Recent Orders</h3>
           </div>
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-500 dark:text-slate-400">
-              <thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300">
+            <table class="w-full text-left text-sm text-slate-400">
+              <thead class="bg-dark-bg text-slate-300">
                 <tr>
-                  <th scope="col" class="px-6 py-3 font-medium">Order ID</th>
-                  <th scope="col" class="px-6 py-3 font-medium">Date</th>
-                  <th scope="col" class="px-6 py-3 font-medium">Status</th>
-                  <th scope="col" class="px-6 py-3 font-medium">Total</th>
+                  <th scope="col" class="px-8 py-4 font-semibold uppercase tracking-widest text-xs">Order ID</th>
+                  <th scope="col" class="px-8 py-4 font-semibold uppercase tracking-widest text-xs">Date</th>
+                  <th scope="col" class="px-8 py-4 font-semibold uppercase tracking-widest text-xs">Status</th>
+                  <th scope="col" class="px-8 py-4 font-semibold uppercase tracking-widest text-xs">Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr class="border-b border-slate-200 dark:border-slate-800 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                  <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#ORD-001</td>
-                  <td class="px-6 py-4">Oct 24, 2023</td>
-                  <td class="px-6 py-4">
-                    <span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded-full">Delivered</span>
+              <tbody class="font-light">
+                <tr class="border-b border-white/5 last:border-0 hover:bg-dark-bg/50 transition-colors">
+                  <td class="px-8 py-5 text-white">#ORD-001</td>
+                  <td class="px-8 py-5">Oct 24, 2026</td>
+                  <td class="px-8 py-5">
+                    <span class="px-3 py-1 text-[10px] uppercase tracking-widest border border-green-500/30 text-green-400 rounded-none bg-green-500/5">Delivered</span>
                   </td>
-                  <td class="px-6 py-4 font-medium">$124.50</td>
+                  <td class="px-8 py-5 text-white">$124.50</td>
                 </tr>
-                <tr class="border-b border-slate-200 dark:border-slate-800 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                  <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#ORD-002</td>
-                  <td class="px-6 py-4">Oct 18, 2023</td>
-                  <td class="px-6 py-4">
-                    <span class="px-2.5 py-1 text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 rounded-full">Delivered</span>
+                <tr class="border-b border-white/5 last:border-0 hover:bg-dark-bg/50 transition-colors">
+                  <td class="px-8 py-5 text-white">#ORD-002</td>
+                  <td class="px-8 py-5">Oct 18, 2026</td>
+                  <td class="px-8 py-5">
+                    <span class="px-3 py-1 text-[10px] uppercase tracking-widest border border-green-500/30 text-green-400 rounded-none bg-green-500/5">Delivered</span>
                   </td>
-                  <td class="px-6 py-4 font-medium">$89.99</td>
+                  <td class="px-8 py-5 text-white">$89.99</td>
                 </tr>
-                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                  <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">#ORD-003</td>
-                  <td class="px-6 py-4">Oct 05, 2023</td>
-                  <td class="px-6 py-4">
-                    <span class="px-2.5 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-full">Processing</span>
+                <tr class="hover:bg-dark-bg/50 transition-colors">
+                  <td class="px-8 py-5 text-white">#ORD-003</td>
+                  <td class="px-8 py-5">Oct 05, 2026</td>
+                  <td class="px-8 py-5">
+                    <span class="px-3 py-1 text-[10px] uppercase tracking-widest border border-primary-500/30 text-primary-500 rounded-none bg-primary-500/5">Processing</span>
                   </td>
-                  <td class="px-6 py-4 font-medium">$299.00</td>
+                  <td class="px-8 py-5 text-white">$299.00</td>
                 </tr>
               </tbody>
             </table>
