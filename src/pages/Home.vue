@@ -71,37 +71,94 @@
           </router-link>
         </div>
 
-        <div v-if="productStore.isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <LoadingSkeleton v-for="i in 4" :key="i" />
-        </div>
+
         
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <ProductCard v-for="product in productStore.featuredProducts" :key="product.id" :product="product" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <ProductCard v-for="product in featuredProductsCurated" :key="product.id" :product="product" />
         </div>
       </section>
 
-      <!-- Categories Spotlight -->
-      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <router-link to="/categories" class="relative group h-[500px] overflow-hidden rounded-2xl shadow-xl">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-          <div class="absolute inset-0 p-12 flex flex-col justify-end text-white">
-            <span class="uppercase tracking-widest text-xs font-bold mb-2">Elevated Style</span>
-            <h3 class="text-4xl font-bold uppercase mb-4 tracking-tighter">Fashion Collective</h3>
-            <div class="w-12 h-1 bg-primary-500 transition-all duration-300 group-hover:w-full mb-6"></div>
-            <p class="text-slate-200 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">Discover meticulously tailored pieces that define modern sophistication.</p>
-          </div>
-        </router-link>
-        <router-link to="/categories" class="relative group h-[500px] overflow-hidden rounded-2xl shadow-xl">
-          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-          <div class="absolute inset-0 p-12 flex flex-col justify-end text-white">
-            <span class="uppercase tracking-widest text-xs font-bold mb-2">Modern Living</span>
-            <h3 class="text-4xl font-bold uppercase mb-4 tracking-tighter">Lifestyle & Tech</h3>
-            <div class="w-12 h-1 bg-primary-500 transition-all duration-300 group-hover:w-full mb-6"></div>
-            <p class="text-slate-200 max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-500">Innovative design meets everyday functionality in our curated tech and lifestyle essentials.</p>
-          </div>
-        </router-link>
+      <!-- Premium Collections Gallery -->
+      <section class="space-y-12">
+        <div class="text-center space-y-4">
+          <span class="text-primary-500 uppercase tracking-[0.4em] text-[10px] font-bold block">The Curated Archive</span>
+          <h2 class="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white uppercase tracking-tighter">Exclusive Collections</h2>
+          <div class="w-24 h-1 bg-primary-500 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[900px]">
+          <!-- Large Card 1: Luxury Sneakers -->
+          <router-link 
+            :to="{ path: '/products', query: { category: 'mens-shoes' } }" 
+            class="md:col-span-7 relative group overflow-hidden rounded-3xl shadow-2xl transition-all duration-700"
+          >
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+            <div class="absolute inset-0 p-8 md:p-16 flex flex-col justify-end text-white">
+              <span class="uppercase tracking-[0.4em] text-[10px] font-bold mb-4 text-primary-500 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">Performance & Style</span>
+              <h3 class="text-3xl md:text-5xl font-bold uppercase mb-4 tracking-tighter">Luxury Sneakers</h3>
+              <p class="text-slate-300 max-w-md text-sm font-light opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 translate-y-4 group-hover:translate-y-0">Uncompromising craftsmanship meets contemporary silhouettes.</p>
+              <div class="mt-8 flex items-center gap-3 text-xs font-bold uppercase tracking-widest group-hover:text-primary-500 transition-colors">
+                Explore Collection
+                <ArrowRightIcon class="w-4 h-4 transition-transform group-hover:translate-x-2" />
+              </div>
+            </div>
+          </router-link>
+
+          <!-- Large Card 2: Premium Watches -->
+          <router-link 
+            :to="{ path: '/products', query: { category: 'mens-watches' } }" 
+            class="md:col-span-5 relative group overflow-hidden rounded-3xl shadow-2xl transition-all duration-700"
+          >
+            <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+            <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-white">
+              <span class="uppercase tracking-[0.4em] text-[10px] font-bold mb-4 text-primary-500 opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">Precision Engineering</span>
+              <h3 class="text-3xl font-bold uppercase mb-4 tracking-tighter">Premium Watches</h3>
+              <div class="mt-6 flex items-center gap-3 text-xs font-bold uppercase tracking-widest group-hover:text-primary-500 transition-colors">
+                Explore Collection
+                <ArrowRightIcon class="w-4 h-4 transition-transform group-hover:translate-x-2" />
+              </div>
+            </div>
+          </router-link>
+
+          <!-- Row 2: Smaller Cards -->
+          <router-link 
+            :to="{ path: '/products', query: { category: 'mens-shirts' } }" 
+            class="md:col-span-4 relative group overflow-hidden rounded-3xl shadow-2xl h-[400px] md:h-auto"
+          >
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 class="text-xl font-bold uppercase mb-2 tracking-widest">Streetwear</h3>
+              <div class="w-10 h-0.5 bg-primary-500 transition-all duration-500 group-hover:w-full"></div>
+            </div>
+          </router-link>
+
+          <router-link 
+            :to="{ path: '/products', query: { category: 'womens-dresses' } }" 
+            class="md:col-span-4 relative group overflow-hidden rounded-3xl shadow-2xl h-[400px] md:h-auto"
+          >
+            <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 class="text-xl font-bold uppercase mb-2 tracking-widest">Minimal Fashion</h3>
+              <div class="w-10 h-0.5 bg-primary-500 transition-all duration-500 group-hover:w-full"></div>
+            </div>
+          </router-link>
+
+          <router-link 
+            :to="{ path: '/products', query: { category: 'sunglasses' } }" 
+            class="md:col-span-4 relative group overflow-hidden rounded-3xl shadow-2xl h-[400px] md:h-auto"
+          >
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+            <div class="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <h3 class="text-xl font-bold uppercase mb-2 tracking-widest">Urban Essentials</h3>
+              <div class="w-10 h-0.5 bg-primary-500 transition-all duration-500 group-hover:w-full"></div>
+            </div>
+          </router-link>
+        </div>
       </section>
 
       <!-- Best Sellers -->
@@ -114,12 +171,10 @@
           </div>
         </div>
         
-        <div v-if="productStore.isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <LoadingSkeleton v-for="i in 4" :key="i" />
-        </div>
+
         
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <ProductCard v-for="product in productStore.products.slice(4, 8)" :key="product.id" :product="product" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <ProductCard v-for="product in bestSellersCurated" :key="product.id" :product="product" />
         </div>
       </section>
 
@@ -208,6 +263,24 @@ import {
 const router = useRouter();
 const productStore = useProductStore();
 
+
+const featuredProductsCurated = [
+  { id: 101, title: 'Luxury Sneakers', price: 180, thumbnail: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80', category: 'Footwear', rating: 4.9, discountPercentage: 10 },
+  { id: 102, title: 'Premium Watch', price: 250, thumbnail: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80', category: 'Accessories', rating: 4.8, discountPercentage: 0 },
+  { id: 103, title: 'Streetwear Hoodie', price: 85, thumbnail: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80', category: 'Apparel', rating: 4.7, discountPercentage: 15 },
+  { id: 104, title: 'Minimal Jacket', price: 120, thumbnail: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80', category: 'Apparel', rating: 4.9, discountPercentage: 0 },
+  { id: 105, title: 'Urban Essentials', price: 45, thumbnail: 'https://images.unsplash.com/photo-1509941943102-10c232535736?auto=format&fit=crop&w=800&q=80', category: 'Lifestyle', rating: 4.6, discountPercentage: 0 },
+  { id: 106, title: 'Premium Sunglasses', price: 150, thumbnail: 'https://images.unsplash.com/photo-1511499767350-a1590fdb7318?auto=format&fit=crop&w=800&q=80', category: 'Accessories', rating: 4.8, discountPercentage: 20 },
+];
+
+const bestSellersCurated = [
+  { id: 201, title: 'Nike Air Style Sneakers', price: 160, thumbnail: 'https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=80', category: 'Footwear', rating: 5.0, discountPercentage: 0 },
+  { id: 202, title: 'Classic Leather Watch', price: 195, thumbnail: 'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=800&q=80', category: 'Accessories', rating: 4.9, discountPercentage: 5 },
+  { id: 203, title: 'Oversized Street Hoodie', price: 75, thumbnail: 'https://images.unsplash.com/photo-1578932750294-f5001e65c1bb?auto=format&fit=crop&w=800&q=80', category: 'Apparel', rating: 4.8, discountPercentage: 10 },
+  { id: 204, title: 'Minimal White Sneakers', price: 110, thumbnail: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80', category: 'Footwear', rating: 4.9, discountPercentage: 0 },
+  { id: 205, title: 'Urban Backpack', price: 130, thumbnail: 'https://images.unsplash.com/photo-1553062407-98eeb94c6a62?auto=format&fit=crop&w=800&q=80', category: 'Accessories', rating: 4.7, discountPercentage: 0 },
+  { id: 206, title: 'Designer Perfume', price: 210, thumbnail: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80', category: 'Fragrance', rating: 4.9, discountPercentage: 15 },
+];
 
 onMounted(async () => {
   if (productStore.featuredProducts.length === 0) {
