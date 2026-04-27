@@ -33,7 +33,7 @@
               <div class="flex justify-between items-start gap-4">
                 <div>
                   <h3 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-tight cursor-pointer hover:text-primary-500 transition-colors" @click="$router.push(`/product/${item.id}`)">{{ item.title }}</h3>
-                  <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{{ item.category }}</p>
+                  <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">{{ typeof item.category === 'object' ? item.category.name : item.category }}</p>
                 </div>
                 <p class="text-lg font-bold text-slate-900 dark:text-white tracking-tighter">${{ (item.price * item.quantity).toFixed(2) }}</p>
               </div>
@@ -120,8 +120,6 @@ function handleCheckout() {
     return;
   }
   
-  alert('Order placed successfully! (Demo)');
-  cartStore.clearCart();
-  router.push('/dashboard');
+  router.push('/payment');
 }
 </script>

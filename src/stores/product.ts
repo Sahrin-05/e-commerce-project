@@ -12,12 +12,33 @@ export const useProductStore = defineStore('product', () => {
 
   const searchSuggestions = ref<Product[]>([]);
 
-  async function fetchProducts(limit = 12, skip = 0) {
+  interface FetchOptions {
+    limit?: number;
+    skip?: number;
+    category?: string;
+    search?: string;
+    sortBy?: string;
+  }
+
+  async function fetchProducts(options: FetchOptions = {}) {
+    const { limit = 12, skip = 0, category, search, sortBy } = options;
     isLoading.value = true;
     error.value = null;
     try {
-      const response = await api.getProducts(limit, skip);
-      products.value = response.data.products;
+      let response;
+      if (search) {
+        response = await api.searchProducts(search);
+      } else if (category) {
+        response = await api.getProductsByCategory(category);
+      } else {
+        response = await api.getProducts(limit, skip);
+      }
+      
+      let fetchedProducts = response.data.products;
+
+      // Handle basic client-side sorting if needed, or assume API handles it
+      // For now, we'll just use the fetched products
+      products.value = fetchedProducts;
     } catch (err: any) {
       error.value = 'Failed to load products';
       console.error(err);

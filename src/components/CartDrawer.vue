@@ -37,7 +37,7 @@
                 <h3 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-tight line-clamp-2 leading-relaxed">{{ item.title }}</h3>
                 <p class="text-xs font-bold text-slate-900 dark:text-white tracking-tighter">${{ ((item.price * (1 - item.discountPercentage / 100)) * item.quantity).toFixed(2) }}</p>
               </div>
-              <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold mb-6">{{ item.category }}</p>
+              <p class="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold mb-6">{{ typeof item.category === 'object' ? item.category.name : item.category }}</p>
               
               <div class="flex items-center justify-between mt-auto">
                 <div class="flex items-center border border-slate-100 dark:border-white/10 rounded-xl bg-slate-50 dark:bg-dark-bg p-0.5">
@@ -49,7 +49,7 @@
                     <PlusIcon class="w-3 h-3" />
                   </button>
                 </div>
-                <button @click="cartStore.removeFromCart(item.id)" class="text-[9px] font-bold uppercase tracking-widest text-slate-400 hover:text-red-500 transition-colors border-b border-transparent hover:border-red-500 pb-0.5">Remove</button>
+                <button @click="cartStore.removeItem(item.id)" class="text-[9px] font-bold uppercase tracking-widest text-slate-400 hover:text-red-500 transition-colors border-b border-transparent hover:border-red-500 pb-0.5">Remove</button>
               </div>
             </div>
           </li>
@@ -63,10 +63,15 @@
           <p class="text-xl text-primary-500 tracking-tighter">${{ cartStore.totalPrice.toFixed(2) }}</p>
         </div>
         <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-10 font-bold">Complimentary White-Glove Shipping</p>
-        <button @click="$router.push('/cart'); cartStore.toggleDrawer()" class="w-full btn-primary py-6 text-xs uppercase tracking-[0.2em] font-bold shadow-2xl shadow-primary-500/20 group">
-          Finalize Selection
-          <ArrowRightIcon class="inline-block w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-        </button>
+        <div class="space-y-4">
+          <button @click="$router.push('/payment'); cartStore.toggleDrawer()" class="w-full btn-primary py-6 text-[10px] uppercase tracking-[0.2em] font-bold shadow-2xl shadow-primary-500/20 group flex items-center justify-center gap-3">
+            <CreditCardIcon class="w-4 h-4" />
+            Card Payment
+          </button>
+          <button @click="$router.push('/cart'); cartStore.toggleDrawer()" class="w-full btn-secondary py-5 text-[10px] uppercase tracking-[0.2em] font-bold border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:border-primary-500">
+            View Shopping Bag
+          </button>
+        </div>
       </div>
     </div>
   </transition>
@@ -74,7 +79,7 @@
 
 <script setup lang="ts">
 import { useCartStore } from '../stores/cart';
-import { XIcon, ShoppingCartIcon, PlusIcon, MinusIcon, ArrowRightIcon } from 'lucide-vue-next';
+import { XIcon, ShoppingCartIcon, PlusIcon, MinusIcon, ArrowRightIcon, CreditCardIcon } from 'lucide-vue-next';
 
 const cartStore = useCartStore();
 </script>

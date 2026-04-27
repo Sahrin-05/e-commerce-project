@@ -28,7 +28,7 @@
                     @click="selectCategory(cat)" 
                     :class="['w-full text-left px-6 py-4 transition-all duration-300 uppercase tracking-widest text-[10px] font-bold group capitalize', activeCategory === cat ? 'bg-primary-500 text-white dark:text-dark-bg shadow-lg shadow-primary-500/20' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-primary-500']"
                   >
-                    {{ cat }}
+                    {{ typeof cat === 'object' ? cat.name : cat }}
                   </button>
                 </li>
               </ul>

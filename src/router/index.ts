@@ -44,6 +44,12 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../pages/Cart.vue'),
   },
   {
+    path: '/payment',
+    name: 'Payment',
+    component: () => import('../pages/Payment.vue'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../pages/Dashboard.vue'),

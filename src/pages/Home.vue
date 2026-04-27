@@ -37,32 +37,23 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-32">
       
-      <!-- Search & Quick Filters -->
+      <!-- Quick Collections Spotlight (Replacing old search) -->
       <section class="glass-card p-8 sm:p-12 -mt-32 relative z-20">
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="relative flex-grow">
-            <SearchIcon class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-            <input 
-              v-model="searchQuery" 
-              @keyup.enter="handleSearch"
-              type="text" 
-              placeholder="What are you looking for today?" 
-              class="input-field pl-14 py-5 w-full text-lg !rounded-none border-b-2 border-transparent focus:border-primary-500 bg-slate-50 dark:bg-dark-bg"
-            >
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-8">
+          <div class="space-y-2">
+            <span class="text-primary-500 uppercase tracking-[0.3em] text-[10px] font-bold block">Exclusive Discovery</span>
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Curated Collections</h3>
           </div>
-          <button @click="handleSearch" class="btn-primary py-5 px-12 text-sm tracking-widest uppercase md:w-auto w-full">Search</button>
-        </div>
-        
-        <div class="mt-8 flex flex-wrap gap-4 items-center">
-          <span class="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 mr-2">Quick Collections:</span>
-          <button 
-            v-for="cat in productStore.categories.slice(0, 5)" 
-            :key="cat" 
-            @click="goToCategory(cat)" 
-            class="px-5 py-2 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 text-[10px] tracking-widest uppercase hover:border-primary-500 hover:text-primary-500 transition-all capitalize hover:bg-primary-500/5"
-          >
-            {{ cat }}
-          </button>
+          <div class="flex flex-wrap gap-3 items-center justify-center sm:justify-end">
+            <button 
+              v-for="cat in productStore.categories.slice(0, 6)" 
+              :key="cat" 
+              @click="goToCategory(cat)" 
+              class="px-6 py-2.5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 text-[10px] tracking-widest uppercase hover:border-primary-500 hover:text-primary-500 transition-all capitalize hover:bg-primary-500/5 font-bold"
+            >
+              {{ typeof cat === 'object' ? cat.name : cat }}
+            </button>
+          </div>
         </div>
       </section>
 
@@ -216,7 +207,7 @@ import {
 
 const router = useRouter();
 const productStore = useProductStore();
-const searchQuery = ref('');
+
 
 onMounted(async () => {
   if (productStore.featuredProducts.length === 0) {
@@ -230,11 +221,7 @@ onMounted(async () => {
   }
 });
 
-function handleSearch() {
-  if (searchQuery.value.trim()) {
-    router.push({ path: '/products', query: { q: searchQuery.value } });
-  }
-}
+
 
 function goToCategory(category: string) {
   router.push({ path: '/products', query: { category } });

@@ -30,7 +30,7 @@ export const useCartStore = defineStore('cart', () => {
     }, 0);
   });
 
-  function addToCart(product: Product, quantity: number = 1) {
+  function addItem(product: Product, quantity: number = 1) {
     const existingItem = items.value.find(item => item.id === product.id);
     if (existingItem) {
       existingItem.quantity += quantity;
@@ -40,7 +40,7 @@ export const useCartStore = defineStore('cart', () => {
     isDrawerOpen.value = true;
   }
 
-  function removeFromCart(productId: number) {
+  function removeItem(productId: number) {
     items.value = items.value.filter(item => item.id !== productId);
   }
 
@@ -64,8 +64,8 @@ export const useCartStore = defineStore('cart', () => {
     isDrawerOpen,
     totalItems,
     totalPrice,
-    addToCart,
-    removeFromCart,
+    addItem,
+    removeItem,
     updateQuantity,
     clearCart,
     toggleDrawer

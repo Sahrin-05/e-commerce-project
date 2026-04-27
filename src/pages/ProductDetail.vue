@@ -36,7 +36,7 @@
             <span class="mx-2">/</span>
             <router-link to="/products" class="hover:text-primary-500">Shop</router-link>
             <span class="mx-2">/</span>
-            <span class="text-slate-900 dark:text-white">{{ product.category }}</span>
+            <span class="text-slate-900 dark:text-white">{{ typeof product.category === 'object' ? product.category.name : product.category }}</span>
           </nav>
 
           <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-4">

@@ -36,7 +36,7 @@
     <!-- Content -->
     <div class="p-6 flex flex-col flex-grow">
       <div class="flex justify-between items-start mb-2">
-        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{{ product.category }}</span>
+        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{{ typeof product.category === 'object' ? product.category.name : product.category }}</span>
         <div class="flex items-center gap-1 text-primary-500">
           <StarIcon class="w-3 h-3 fill-current" />
           <span class="text-[10px] font-bold">{{ product.rating }}</span>
