@@ -103,8 +103,21 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
+      <!-- End of Product Content -->
+      <!-- Recently Viewed Section -->
+      <section class="mt-16 animate-fade-in" v-if="recentlyViewedStore.items.length > 0">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Recently Viewed</h2>
+        <div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+          <ProductCard
+            v-for="item in recentlyViewedStore.items"
+            :key="item.id"
+            :product="item"
+            class="min-w-[250px]"
+          />
+        </div>
+      </section>
+    </div>
       
       <!-- Not Found State -->
       <div v-else class="text-center py-24 bg-slate-50 dark:bg-dark-surface rounded-2xl border border-slate-100 dark:border-white/5 shadow-xl">
@@ -123,6 +136,8 @@ import type { Product } from '../types';
 import { getCategoryName } from '../types';
 import api from '../services/api';
 import { useCartStore } from '../stores/cart';
+import { useRecentlyViewedStore } from '../stores/recentlyViewed';
+import ProductCard from '../components/ProductCard.vue';
 import { useWishlistStore } from '../stores/wishlist';
 import ProductDetailSkeleton from '../components/ProductDetailSkeleton.vue';
 import { 
@@ -133,6 +148,7 @@ import {
 const route = useRoute();
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();
+const recentlyViewedStore = useRecentlyViewedStore();
 
 const product = ref<Product | null>(null);
 const isLoading = ref(true);
@@ -153,7 +169,10 @@ onMounted(async () => {
   } catch (err) {
     console.error('Failed to load product', err);
   } finally {
-    isLoading.value = false;
+  // After loading product, add to recently viewed
+  if (product.value) {
+    recentlyViewedStore.add(product.value);
+  }
   }
 });
 

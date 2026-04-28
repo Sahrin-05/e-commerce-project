@@ -40,14 +40,25 @@ export const useCartStore = defineStore('cart', () => {
     isDrawerOpen.value = true;
   }
 
-  function removeItem(productId: number) {
+    function removeItem(productId: number) {
+    // Remove the product from the cart
     items.value = items.value.filter(item => item.id !== productId);
+    // If the cart is now empty, close the drawer to reflect empty state
+    if (items.value.length === 0) {
+      isDrawerOpen.value = false;
+    }
   }
 
-  function updateQuantity(productId: number, quantity: number) {
+    function updateQuantity(productId: number, quantity: number) {
     const item = items.value.find(item => item.id === productId);
     if (item) {
-      item.quantity = Math.max(1, quantity);
+      const newQty = Math.max(0, quantity);
+      // If quantity is zero or negative, remove the item from the cart
+      if (newQty <= 0) {
+        removeItem(productId);
+      } else {
+        item.quantity = newQty;
+      }
     }
   }
 
