@@ -1,6 +1,26 @@
 <template>
   <div class="bg-white dark:bg-dark-bg min-h-screen transition-colors duration-500">
-    <div class="page-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-14">
+      <section class="luxury-page-hero group fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=80"
+          alt="Premium collection showroom"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-gradient-to-l from-primary-500/20 to-transparent md:block"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">The Archive</span>
+          <h1 class="luxury-hero-title">Shop The Curated Collection</h1>
+          <p class="luxury-hero-copy">
+            Discover refined essentials, statement pieces, and collector-worthy designs selected for a modern luxury wardrobe.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="page-container !pt-12">
       
       <!-- Mobile Filter Header -->
       <div class="lg:hidden flex items-center justify-between mb-12 pb-6 border-b border-slate-100 dark:border-white/5">
@@ -32,7 +52,7 @@
         <!-- Main Content -->
         <div class="flex-1">
           <!-- Header Actions -->
-          <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-16 gap-10 bg-slate-50 dark:bg-dark-surface/30 p-10 rounded-3xl border border-slate-100 dark:border-white/5">
+          <div class="premium-panel flex flex-col xl:flex-row justify-between items-start xl:items-center mb-16 gap-10 p-8 md:p-10">
             <div>
               <h1 class="text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-3">
                 {{ activeCategory ? activeCategory : (searchQuery ? `"${searchQuery}"` : 'All Pieces') }}

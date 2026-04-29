@@ -1,18 +1,29 @@
 <template>
-  <div class="py-16 md:py-24">
+  <div class="py-10 md:py-14">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold uppercase tracking-widest mb-4">Shop by Category</h1>
-        <div class="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our curated collections across various styles and needs.</p>
-      </div>
+      <section class="luxury-page-hero group mb-12 md:mb-16 fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1800&q=80"
+          alt="Luxury category editorial"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Curated Departments</span>
+          <h1 class="luxury-hero-title">Shop By Category</h1>
+          <p class="luxury-hero-copy">
+            Move through focused edits across fashion, technology, accessories, and refined living.
+          </p>
+        </div>
+      </section>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <router-link 
           v-for="category in categories" 
           :key="category.id" 
           :to="`/products?category=${category.slug}`"
-          class="group relative h-96 overflow-hidden rounded-xl block shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+          class="group relative h-96 overflow-hidden rounded-[2rem] block shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary-500/10"
         >
           <!-- Background Image -->
           <div class="absolute inset-0">

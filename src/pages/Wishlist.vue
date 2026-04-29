@@ -1,17 +1,27 @@
 <template>
-  <div class="min-h-screen pt-24 pb-12 transition-colors duration-500">
+  <div class="min-h-screen py-10 md:py-14 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Header -->
-      <div class="flex items-end justify-between mb-8 md:mb-12 border-b border-slate-200 dark:border-white/10 pb-6 animate-fade-in">
-        <div>
-          <h1 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white uppercase tracking-tighter mb-2">My Wishlist</h1>
-          <p class="text-slate-500 dark:text-slate-400 font-medium uppercase tracking-widest text-xs">Curated Selection</p>
+      <section class="luxury-page-hero group mb-10 md:mb-14 animate-fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=80"
+          alt="Curated fashion favorites"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Curated Selection</span>
+          <h1 class="luxury-hero-title">Your Private Wishlist</h1>
+          <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <p class="max-w-xl text-sm leading-7 text-slate-300">
+              Save the pieces that caught your eye and return when the moment feels right.
+            </p>
+            <span class="inline-flex w-fit rounded-full border border-primary-500/40 bg-primary-500/10 px-5 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-primary-300">
+              {{ wishlistStore.totalItems }} Items
+            </span>
+          </div>
         </div>
-        <div class="text-right">
-          <span class="text-sm font-bold text-slate-900 dark:text-white">{{ wishlistStore.totalItems }} Items</span>
-        </div>
-      </div>
+      </section>
 
       <!-- Loading State -->
       <div v-if="isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -19,7 +29,7 @@
       </div>
 
       <!-- Empty State -->
-      <div v-else-if="wishlistStore.items.length === 0" class="flex flex-col items-center justify-center py-20 px-4 animate-slide-up">
+      <div v-else-if="wishlistStore.items.length === 0" class="premium-panel flex flex-col items-center justify-center py-20 px-4 animate-slide-up">
         <div class="w-24 h-24 bg-slate-100 dark:bg-slate-800/50 rounded-full flex items-center justify-center mb-6">
           <HeartIcon class="w-10 h-10 text-slate-300 dark:text-slate-600" />
         </div>
@@ -36,7 +46,7 @@
           <div 
             v-for="(product, index) in wishlistStore.items" 
             :key="product.id"
-            class="group relative flex flex-col bg-white dark:bg-dark-surface border border-slate-100 dark:border-white/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 animate-slide-up"
+            class="premium-panel premium-hover group relative flex flex-col overflow-hidden animate-slide-up"
             :style="{ transitionDelay: `${index * 50}ms` }"
           >
             <!-- Image -->

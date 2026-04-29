@@ -9,17 +9,30 @@
     />
 
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="mb-12 flex flex-col gap-5 md:mb-16 md:flex-row md:items-end md:justify-between">
-        <div>
-          <span class="luxury-label">Private Checkout</span>
-          <h1 class="text-4xl font-bold uppercase leading-none tracking-tight text-slate-900 dark:text-white md:text-6xl">
-            Secure Payment
-          </h1>
+      <section class="luxury-page-hero group mb-12 md:mb-16 fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1800&q=80"
+          alt="Secure luxury checkout"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Private Checkout</span>
+          <h1 class="luxury-hero-title">Secure Payment</h1>
+          <p class="luxury-hero-copy">
+            Complete your order through a refined, encrypted checkout experience with simulated payment handling.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <span class="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.22em] text-slate-200 backdrop-blur-xl">
+              Protected checkout
+            </span>
+            <span class="rounded-full border border-primary-500/30 bg-primary-500/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.22em] text-primary-300 backdrop-blur-xl">
+              Order tracking ready
+            </span>
+          </div>
         </div>
-        <p class="max-w-xl text-xs font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-          Complete your order through a refined, encrypted checkout experience.
-        </p>
-      </div>
+      </section>
 
       <div
         v-if="cartStore.items.length === 0"

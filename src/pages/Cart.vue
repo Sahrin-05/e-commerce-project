@@ -1,17 +1,28 @@
 <template>
   <div class="bg-white dark:bg-dark-bg min-h-screen transition-colors duration-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
-        <div>
-          <h1 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Shopping Bag</h1>
-          <p class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-widest mt-2">
-            You have {{ cartStore.totalItems }} pieces in your collection
-          </p>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <section class="luxury-page-hero group mb-12 fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=1800&q=80"
+          alt="Luxury shopping bags"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Shopping Bag</span>
+          <h1 class="luxury-hero-title">Review Your Selection</h1>
+          <div class="mt-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <p class="max-w-xl text-xs font-bold uppercase tracking-[0.22em] text-slate-300">
+              You have {{ cartStore.totalItems }} pieces in your collection
+            </p>
+            <router-link to="/products" class="btn-secondary !border-white/20 !text-white hover:!border-primary-500">
+              Continue Shopping
+              <ArrowRightIcon class="w-4 h-4" />
+            </router-link>
+          </div>
         </div>
-        <router-link to="/products" class="text-xs font-bold uppercase tracking-widest text-primary-500 hover:text-slate-900 dark:hover:text-white transition-colors">
-          Continue Shopping
-        </router-link>
-      </div>
+      </section>
 
       <!-- Loading State -->
       <div v-if="isLoading" class="flex flex-col lg:flex-row gap-12">
@@ -33,7 +44,7 @@
       </div>
 
       <!-- Empty State -->
-      <div v-else-if="cartStore.items.length === 0" class="text-center py-24 bg-slate-50 dark:bg-dark-surface rounded-2xl border border-slate-100 dark:border-white/5 shadow-xl animate-fade-in">
+      <div v-else-if="cartStore.items.length === 0" class="premium-panel text-center py-24 animate-fade-in">
         <ShoppingCartIcon class="w-16 h-16 text-slate-300 mx-auto mb-6" />
         <h2 class="text-2xl font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-4">Your bag is empty</h2>
         <p class="text-slate-500 dark:text-slate-400 mb-10 max-w-sm mx-auto">Explore our collections and discover pieces that speak to your style.</p>
@@ -44,7 +55,7 @@
       <div v-else class="flex flex-col lg:flex-row gap-12 animate-fade-in">
         <!-- Cart Items list -->
         <div class="flex-1 space-y-6">
-          <div v-for="item in cartStore.items" :key="item.id" class="group bg-white dark:bg-dark-surface p-6 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row gap-6 items-center sm:items-stretch">
+          <div v-for="item in cartStore.items" :key="item.id" class="premium-panel premium-hover group p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-stretch">
             
             <div class="w-32 h-32 shrink-0 bg-slate-50 dark:bg-dark-bg rounded-lg overflow-hidden cursor-pointer" @click="$router.push(`/product/${item.id}`)">
               <img :src="item.thumbnail" :alt="item.title" class="w-full h-full object-cover">
@@ -81,7 +92,7 @@
 
         <!-- Order Summary -->
         <div class="w-full lg:w-96 shrink-0">
-          <div class="bg-slate-50 dark:bg-dark-surface rounded-2xl p-8 border border-slate-100 dark:border-white/5 shadow-xl sticky top-28">
+          <div class="premium-panel p-8 sticky top-28">
             <h2 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-8 border-b border-slate-200 dark:border-white/10 pb-4">Summary</h2>
             
             <div class="space-y-4 text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-8">

@@ -46,6 +46,38 @@
   .luxury-label {
     @apply text-primary-500 uppercase tracking-[0.4em] text-[10px] font-bold block mb-4;
   }
+
+  .luxury-page-hero {
+    @apply relative overflow-hidden rounded-[2rem] bg-slate-950 text-white shadow-2xl border border-white/10 min-h-[18rem] md:min-h-[22rem];
+  }
+
+  .luxury-hero-bg {
+    @apply absolute inset-0 h-full w-full object-cover opacity-60 transition-transform duration-300 ease-out;
+  }
+
+  .luxury-hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-slate-950/10;
+  }
+
+  .luxury-hero-content {
+    @apply relative z-10 flex min-h-[18rem] flex-col justify-end px-6 py-10 md:min-h-[22rem] md:px-12 md:py-12;
+  }
+
+  .luxury-hero-title {
+    @apply max-w-3xl text-4xl font-bold uppercase leading-none tracking-tight md:text-6xl;
+  }
+
+  .luxury-hero-copy {
+    @apply mt-5 max-w-2xl text-sm leading-7 text-slate-300 md:text-base;
+  }
+
+  .premium-panel {
+    @apply rounded-[2rem] border border-slate-200/70 bg-white/75 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-dark-surface/70;
+  }
+
+  .premium-hover {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary-500/10;
+  }
 }
 
 /* Custom Scrollbar */
@@ -63,11 +95,11 @@
 
 /* Transitions & Animations */
 .fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.25s ease-out forwards;
 }
 
 .slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+  animation: slideUp 0.28s ease-out forwards;
 }
 
 @keyframes fadeIn {

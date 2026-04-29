@@ -1,12 +1,25 @@
 <template>
-  <div class="bg-white dark:bg-dark-bg min-h-screen transition-colors duration-500 py-16 md:py-24">
+  <div class="bg-white dark:bg-dark-bg min-h-screen transition-colors duration-500 py-10 md:py-14">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section class="luxury-page-hero group mb-12 animate-fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80"
+          alt="Premium parcel delivery"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Order Concierge</span>
+          <h1 class="luxury-hero-title">Track Your Collection</h1>
+          <p class="luxury-hero-copy">
+            Follow each stage of your order from placement to arrival with a polished private tracking view.
+          </p>
+        </div>
+      </section>
       
       <!-- Search Section -->
-      <div class="max-w-2xl mx-auto text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white uppercase tracking-tighter mb-4 animate-fade-in">Track Your Collection</h1>
-        <div class="w-24 h-1 bg-primary-500 mx-auto mb-8 animate-fade-in"></div>
-        
+      <div class="premium-panel max-w-2xl mx-auto text-center mb-16 p-5 md:p-8">
         <div class="relative group animate-slide-up">
           <input 
             v-model="trackingInput" 
@@ -31,19 +44,19 @@
           
           <!-- Order Header Info -->
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div class="glass-card p-8 text-center md:text-left">
+            <div class="glass-card premium-hover p-8 text-center md:text-left">
               <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Order Identifier</p>
               <p class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{{ order.id }}</p>
             </div>
-            <div class="glass-card p-8 text-center md:text-left">
+            <div class="glass-card premium-hover p-8 text-center md:text-left">
               <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Investment Total</p>
               <p class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">${{ order.total.toFixed(2) }}</p>
             </div>
-            <div class="glass-card p-8 text-center md:text-left">
+            <div class="glass-card premium-hover p-8 text-center md:text-left">
               <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Issue Date</p>
               <p class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{{ order.date }}</p>
             </div>
-            <div class="glass-card p-8 text-center md:text-left border-primary-500/30 bg-primary-500/5">
+            <div class="glass-card premium-hover p-8 text-center md:text-left border-primary-500/30 bg-primary-500/5">
               <p class="text-[10px] uppercase tracking-widest text-primary-500 font-bold mb-2">Estimated Arrival</p>
               <p class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{{ order.estimatedDelivery }}</p>
             </div>

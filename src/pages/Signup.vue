@@ -1,10 +1,42 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white dark:bg-dark-bg transition-colors duration-500">
-    <!-- Decorative background elements -->
-    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary-500/10 dark:bg-primary-500/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] animate-blob"></div>
-    <div class="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-slate-200 dark:bg-slate-500/5 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000"></div>
+  <div class="min-h-screen bg-white dark:bg-dark-bg transition-colors duration-500">
+    <div class="grid min-h-screen lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)]">
+      <section class="relative hidden overflow-hidden bg-slate-950 text-white lg:block">
+        <img
+          src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1500&q=80"
+          alt="Luxury membership styling"
+          class="absolute inset-0 h-full w-full object-cover opacity-65 transition-transform duration-300 hover:scale-[1.02]"
+        >
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/65 to-transparent"></div>
+        <div class="relative z-10 flex h-full flex-col justify-end p-12 xl:p-16">
+          <span class="luxury-label !mb-4">Membership Atelier</span>
+          <h1 class="max-w-2xl text-6xl font-bold uppercase leading-none tracking-tight xl:text-7xl">
+            Join The Collective
+          </h1>
+          <p class="mt-6 max-w-xl text-base leading-8 text-slate-300">
+            Create your private client profile for saved edits, order access, and collection-first shopping.
+          </p>
+          <div class="mt-10 grid max-w-xl grid-cols-3 gap-4">
+            <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-xl">
+              <p class="text-xl font-bold text-primary-300">01</p>
+              <p class="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-300">Apply</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-xl">
+              <p class="text-xl font-bold text-primary-300">02</p>
+              <p class="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-300">Curate</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-xl">
+              <p class="text-xl font-bold text-primary-300">03</p>
+              <p class="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-300">Collect</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div class="max-w-md w-full space-y-10 bg-slate-50/50 dark:bg-dark-surface/90 backdrop-blur-2xl p-10 relative z-10 border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl">
+      <section class="relative flex items-center justify-center overflow-hidden px-4 py-16 sm:px-6 lg:px-10">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(15,23,42,0.08),transparent_32%)]"></div>
+
+    <div class="max-w-md w-full space-y-10 bg-slate-50/60 dark:bg-dark-surface/90 backdrop-blur-2xl p-8 sm:p-10 relative z-10 border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl fade-in">
       <div class="text-center">
         <div class="mx-auto w-16 h-16 bg-primary-500 rounded-none flex items-center justify-center shadow-2xl shadow-primary-500/20 mb-8 transform rotate-3 transition-transform hover:rotate-0 duration-500">
           <span class="text-white dark:text-dark-bg font-bold text-3xl">S</span>
@@ -65,6 +97,8 @@
           <router-link to="/login" class="text-primary-500 hover:text-primary-400 ml-1 transition-colors">Sign In Here</router-link>
         </p>
       </div>
+    </div>
+      </section>
     </div>
   </div>
 </template>

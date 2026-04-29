@@ -1,11 +1,28 @@
 <template>
   <div class="bg-white dark:bg-dark-bg min-h-screen transition-colors duration-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+      <section class="luxury-page-hero group mb-12 fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=1800&q=80"
+          alt="Private member lounge"
+          class="luxury-hero-bg group-hover:scale-[1.03]"
+          loading="eager"
+        >
+        <div class="luxury-hero-overlay"></div>
+        <div class="luxury-hero-content">
+          <span class="luxury-label !mb-3">Client Profile</span>
+          <h1 class="luxury-hero-title">Welcome Back, {{ authStore.user?.firstName || 'Member' }}</h1>
+          <p class="luxury-hero-copy">
+            Your private account space for orders, saved pieces, membership details, and future collection access.
+          </p>
+        </div>
+      </section>
+
       <div class="flex flex-col lg:flex-row gap-12">
         
         <!-- Sidebar -->
         <aside class="w-full lg:w-80 shrink-0 space-y-8">
-          <div class="bg-slate-50 dark:bg-dark-surface rounded-3xl p-10 border border-slate-100 dark:border-white/5 text-center shadow-2xl">
+          <div class="premium-panel premium-hover p-10 text-center">
             <div class="relative inline-block mb-8">
               <img :src="authStore.user?.image" :alt="authStore.user?.username" class="w-32 h-32 rounded-3xl mx-auto border-2 border-primary-500/30 shadow-2xl object-cover p-1 bg-white dark:bg-dark-bg">
               <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-primary-500 rounded-full border-4 border-slate-50 dark:border-dark-surface flex items-center justify-center">
@@ -19,7 +36,7 @@
             </button>
           </div>
 
-          <nav class="bg-slate-50 dark:bg-dark-surface rounded-3xl p-4 border border-slate-100 dark:border-white/5 shadow-2xl">
+          <nav class="premium-panel p-4">
             <ul class="space-y-2">
               <li v-for="item in navItems" :key="item.label">
                 <a 
@@ -50,7 +67,7 @@
 
           <!-- Stats -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div class="bg-white dark:bg-dark-surface rounded-3xl p-8 border border-slate-100 dark:border-white/5 shadow-xl flex items-center gap-6 group hover:shadow-2xl transition-all">
+            <div class="premium-panel premium-hover p-8 flex items-center gap-6 group">
               <div class="w-16 h-16 bg-slate-50 dark:bg-dark-bg text-primary-500 rounded-2xl border border-slate-100 dark:border-white/10 flex items-center justify-center transition-colors group-hover:bg-primary-500 group-hover:text-white">
                 <ShoppingBagIcon class="w-6 h-6" />
               </div>
@@ -60,7 +77,7 @@
               </div>
             </div>
             
-            <div class="bg-white dark:bg-dark-surface rounded-3xl p-8 border border-slate-100 dark:border-white/5 shadow-xl flex items-center gap-6 group hover:shadow-2xl transition-all">
+            <div class="premium-panel premium-hover p-8 flex items-center gap-6 group">
               <div class="w-16 h-16 bg-slate-50 dark:bg-dark-bg text-primary-500 rounded-2xl border border-slate-100 dark:border-white/10 flex items-center justify-center transition-colors group-hover:bg-primary-500 group-hover:text-white">
                 <CreditCardIcon class="w-6 h-6" />
               </div>
@@ -70,7 +87,7 @@
               </div>
             </div>
 
-            <div class="bg-white dark:bg-dark-surface rounded-3xl p-8 border border-slate-100 dark:border-white/5 shadow-xl flex items-center gap-6 group hover:shadow-2xl transition-all">
+            <div class="premium-panel premium-hover p-8 flex items-center gap-6 group">
               <div class="w-16 h-16 bg-slate-50 dark:bg-dark-bg text-primary-500 rounded-2xl border border-slate-100 dark:border-white/10 flex items-center justify-center transition-colors group-hover:bg-primary-500 group-hover:text-white">
                 <HeartIcon class="w-6 h-6" />
               </div>
@@ -82,7 +99,7 @@
           </div>
 
           <!-- Recent Orders -->
-          <div class="bg-white dark:bg-dark-surface rounded-3xl border border-slate-100 dark:border-white/5 shadow-2xl overflow-hidden">
+          <div class="premium-panel overflow-hidden">
             <div class="px-10 py-8 border-b border-slate-100 dark:border-white/5 flex justify-between items-center bg-slate-50/50 dark:bg-dark-bg/20">
               <h3 class="text-lg font-bold text-slate-900 dark:text-white uppercase tracking-widest">Order History</h3>
               <button class="text-[10px] font-bold text-primary-500 uppercase tracking-widest hover:text-slate-900 dark:hover:text-white transition-colors">View All Archive</button>
