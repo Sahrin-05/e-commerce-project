@@ -1,12 +1,12 @@
 <template>
-  <div class="flex flex-col gap-28 pb-32 overflow-hidden">
-    <LuxuryHeroCarousel />
+  <div class="flex flex-col gap-24 pb-32 overflow-hidden">
+    <LuxuryHeroSection />
     <LuxuryMarquee />
 
     <div class="page-container space-y-40 !py-0">
       
       <!-- Quick Collections Spotlight -->
-      <section class="glass-card cinematic-reveal !p-10 sm:!p-16 -mt-28 relative z-20 mx-auto max-w-6xl">
+      <section class="glass-card cinematic-reveal !p-8 sm:!p-12 -mt-14 relative z-20 mx-auto max-w-6xl">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div class="space-y-4 text-center lg:text-left">
             <span class="luxury-label">Discovery Mode</span>
@@ -222,7 +222,7 @@
 <script setup lang="ts">
 import ProductCard from '../components/ProductCard.vue';
 import LimitedOfferCountdown from '../components/home/LimitedOfferCountdown.vue';
-import LuxuryHeroCarousel from '../components/home/LuxuryHeroCarousel.vue';
+import LuxuryHeroSection from '../components/home/LuxuryHeroSection.vue';
 import LuxuryMarquee from '../components/home/LuxuryMarquee.vue';
 import TrendingProductCard from '../components/home/TrendingProductCard.vue';
 import { StarIcon, ArrowRightIcon } from 'lucide-vue-next';
